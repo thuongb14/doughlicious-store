@@ -1,29 +1,22 @@
-import { BrowserRouter, NavLink , Switch, Route } from "react-router-dom";
+import {
+  NavLink,
+} from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import Home from "./Home";
 
-export default function Nav() {
+export default function Nav(props) {
+
   return (
-    <BrowserRouter>
-      <Navbar>
-        <Title>DOUGHLICIOUS</Title>
-        <CustomNavLink to="/">HOME</CustomNavLink>
-        <CustomNavLink to="/shop">SHOP</CustomNavLink>
-        <CustomNavLink to="/cart">
-          <FontAwesomeIcon icon={faShoppingCart} />
-        </CustomNavLink>
-      </Navbar>
-      <Switch>
-        <Route path="/" component={Home} />
-      </Switch>
-    </BrowserRouter>
+    <Navbar>
+      <Title>DOUGHLICIOUS</Title>
+      <CustomNavLink to="/">HOME</CustomNavLink>
+      <CustomNavLink to="/shop">SHOP</CustomNavLink>
+      <CustomNavLink to="/cart">
+        <FontAwesomeIcon icon={faShoppingCart} /><span> ({props.cartCount})</span>
+      </CustomNavLink>
+    </Navbar>
   );
-}
-
-function test() {
-  return <p>Hello</p>;
 }
 
 const Navbar = styled.div`
