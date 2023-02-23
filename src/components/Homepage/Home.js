@@ -1,14 +1,14 @@
 import Spline from "@splinetool/react-spline";
 import styled from "styled-components";
 import Nav from "./Nav";
-import Content from "./Content";
+import Text from "./Text"
 
 export default function Home() {
   return (
     <Container>
-      <Nav/>
+      <Nav />
       <Spline scene="https://prod.spline.design/3JeZz8PvzCNmXqsj/scene.splinecode" />
-      <Content/>
+      <Text/>
     </Container>
   );
 }
@@ -17,11 +17,4 @@ const Container = styled.div`
   width: 100vw;
   overflow: hidden;
   position: absolute;
-
-  .spline {
-    position: relative;
-    margin: 0;
-    top: 0;
-    right: 0;
-  }
 `;
