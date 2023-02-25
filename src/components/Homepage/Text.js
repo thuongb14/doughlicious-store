@@ -18,7 +18,6 @@ export default function Content(props) {
       >
         Visit the Shop
       </Button>
-      <Button onClick={props.addToCart}>+1</Button>
     </Wrapper>
   );
 }

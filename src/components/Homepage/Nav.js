@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
+import { useState } from "react";
 
 export default function Nav(props) {
   const { pathname } = props;
@@ -17,7 +18,7 @@ export default function Nav(props) {
       </CustomNavLink>
       <CustomNavLink to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span> ({props.cartCount})</span>
+        <span>()</span>
       </CustomNavLink>
     </Navbar>
   );
@@ -26,7 +27,6 @@ export default function Nav(props) {
 const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   position: fixed;
   top: 0;
   left: 0;
