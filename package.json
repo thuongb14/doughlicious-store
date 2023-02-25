@@ -10,6 +10,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/material": "^5.11.10",
     "@mui/styled-engine-sc": "^5.11.9",
+    "@mui/styles": "^5.11.9",
     "@mui/system": "^5.11.9",
     "@splinetool/react-spline": "^2.2.5",
     "@splinetool/runtime": "^0.9.222",

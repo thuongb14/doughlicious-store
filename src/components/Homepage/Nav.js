@@ -13,12 +13,12 @@ export default function Nav(props) {
       <CustomNavLink to="/" pathname={pathname}>
         HOME
       </CustomNavLink>
-      <CustomNavLink to="/shop" pathname={pathname}>
+      <CustomNavLink to="/shop/doughnuts" pathname={pathname}>
         SHOP
       </CustomNavLink>
       <CustomNavLink to="/cart">
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span>()</span>
+        <span>({props.cartCount})</span>
       </CustomNavLink>
     </Navbar>
   );
@@ -36,7 +36,7 @@ const Navbar = styled.div`
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   background-color: ${({ pathname }) =>
-    pathname === "/shop" ? "pink" : "rgb(255, 255, 255, 0.3)"};
+    pathname === "/" ? "rgb(255, 255, 255, 0.3)" : "pink" };
   padding: 1rem 3rem;
 `;
 

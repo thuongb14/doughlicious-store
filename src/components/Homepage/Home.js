@@ -2,12 +2,11 @@ import Spline from "@splinetool/react-spline";
 import styled from "styled-components";
 import Nav from "./Nav";
 import Text from "./Text";
-import Shop from "../Shop/Shop";
-export default function Home() {
 
+export default function Home(props) {
   return (
     <Container>
-      <Nav pathname={window.location.pathname}/>
+      <Nav pathname={window.location.pathname} cartCount={props.cartCount} />
       <Spline scene="https://prod.spline.design/3JeZz8PvzCNmXqsj/scene.splinecode" />
       <Text />
     </Container>
