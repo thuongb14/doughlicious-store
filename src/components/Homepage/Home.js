@@ -13,12 +13,13 @@ export default function Home() {
 
   return (
     <Container>
-      <Nav cartCount={cartCount}/>
+      <Nav cartCount={cartCount} pathname={window.location.pathname} />
       <Spline scene="https://prod.spline.design/3JeZz8PvzCNmXqsj/scene.splinecode" />
-      <Text addToCart={addToCart}/>
-    </Container >
+      <Text addToCart={addToCart} />
+    </Container>
   );
 }
+
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
