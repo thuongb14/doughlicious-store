@@ -6,7 +6,7 @@ import Text from "./Text";
 export default function Home(props) {
   return (
     <Container>
-      <Nav pathname={window.location.pathname} cartCount={props.cartCount} />
+      <Nav pathname={window.location.pathname} cartCount={props.cartCount} showCart={props.showCart} cartDrawer={props.cartDrawer} />
       <Spline scene="https://prod.spline.design/3JeZz8PvzCNmXqsj/scene.splinecode" />
       <Text />
     </Container>

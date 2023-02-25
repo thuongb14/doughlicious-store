@@ -8,8 +8,17 @@ export default function Shop(props) {
 
   return (
     <Container>
-      <Nav pathname={location.pathname} cartCount={props.cartCount} />
-      <Items addToCart={props.addToCart} />
+      <Nav
+        pathname={location.pathname}
+        cartCount={props.cartCount}
+        showCart={props.showCart}
+        cartDrawer={props.cartDrawer}
+      />
+      <Items
+        showCart={props.showCart}
+        cartDrawer={props.cartDrawer}
+        addToCart={props.addToCart}
+      />
     </Container>
   );
 }

@@ -11,7 +11,7 @@ export default function Content(props) {
       </h1>
       <p>Made fresh daily. Just a mouthful of goodness</p>
       <Button
-        to="/shop"
+        to="/shop/doughnuts"
         component={Link}
         className="shop-button"
         variant="contained"

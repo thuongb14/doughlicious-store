@@ -16,7 +16,7 @@ export default function Nav(props) {
       <CustomNavLink to="/shop/doughnuts" pathname={pathname}>
         SHOP
       </CustomNavLink>
-      <CustomNavLink to="/cart">
+      <CustomNavLink onClick={() => props.showCart()}>
         <FontAwesomeIcon icon={faShoppingCart} />
         <span>({props.cartCount})</span>
       </CustomNavLink>
