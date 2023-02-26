@@ -9,25 +9,8 @@ function App() {
   const [cartCount, setCartCount] = useState(0);
   const [cartDrawer, setCartDrawer] = useState(false);
 
-  const removeDups = (arr) => {
-    let newArr = [];
-    let ids = [];
-
-    arr.forEach((item) => {
-      let index = ids.indexOf(item.id);
-      if (index === -1) {
-        ids.push(item.id);
-        item.quantity = 1;
-        newArr.push(item);
-      } else {
-        newArr[index].quantity++;
-      }
-    });
-    return newArr;
-  };
-
   const addToCart = (item) => {
-    setCart(removeDups([...cart, item]));
+    setCart([...cart, item]);
     setCartCount(cartCount + 1);
     console.log(cart)
   };
