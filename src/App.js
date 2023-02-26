@@ -2,13 +2,22 @@ import "./App.css";
 import Home from "./components/Homepage/Home";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Shop from "./components/Shop/Shop";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartDrawer, setCartDrawer] = useState(false);
   const [total, setTotal] = useState(0);
+
+  const handleNumberChange = (e, item) => {
+    const existingItemIndex = cart.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+    const updatedCart = [...cart];
+    updatedCart[existingItemIndex].quantity = Number(e.target.value);
+    setCart(updatedCart);
+  };
 
   const addToCart = (item) => {
     const existingItemIndex = cart.findIndex(
@@ -43,6 +52,7 @@ function App() {
       path: "/",
       element: (
         <Home
+          handleNumberChange={handleNumberChange}
           total={total}
           removeFromCart={removeFromCart}
           cart={cart}
@@ -56,6 +66,7 @@ function App() {
       path: "/shop/doughnuts",
       element: (
         <Shop
+          handleNumberChange={handleNumberChange}
           total={total}
           removeFromCart={removeFromCart}
           cart={cart}
@@ -70,6 +81,7 @@ function App() {
       path: "/shop/cookies",
       element: (
         <Shop
+          handleNumberChange={handleNumberChange}
           total={total}
           removeFromCart={removeFromCart}
           cart={cart}

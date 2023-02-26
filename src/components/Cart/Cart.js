@@ -18,7 +18,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-start",
   fontFamily: "Montserrat",
@@ -27,6 +26,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Cart(props) {
   const theme = useTheme();
   const cart = props.cart;
+
+  console.log(cart)
 
   return (
     <Modal
@@ -63,15 +64,16 @@ export default function Cart(props) {
             <div style={{ textAlign: "center" }}>
               <img
                 style={{ width: "50%", padding: "1rem" }}
-                src="https://openailabsprodscus.blob.core.windows.net/private/user-xih24vYk37Iwb9eO0e0334w5/generations/generation-FkcOfx3FSyEFWaHduAW2kZle/image.webp?st=2023-02-26T06%3A29%3A51Z&se=2023-02-26T08%3A27%3A51Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/webp&skoid=15f0b47b-a152-4599-9e98-9cb4a58269f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-02-26T04%3A55%3A56Z&ske=2023-03-05T04%3A55%3A56Z&sks=b&skv=2021-08-06&sig=TCeYbdBi1m89YZOIRq3uulhjYIYd5PQPhwF%2BhKoARxE%3D"
+                src="https://i.ibb.co/8bR9PBR/DALL-E-2023-02-26-19-33-36-Nothing-in-your-cart-sad-donut.png"
                 alt=""
+                border="0"
               />
               <p>Let's add in!</p>
             </div>
           ) : (
             <div>
               {cart.map((item, index) => (
-                <List>
+                <List key={index}>
                   <Grid container spacing={2}>
                     <Grid item xs={5}>
                       <Item>
@@ -88,10 +90,10 @@ export default function Cart(props) {
                           <Box component="form">
                             <TextField
                               type="number"
-                              id="outlined-basic"
                               label="Quantity"
                               variant="outlined"
-                              value={item.quantity}
+                              defaultValue={Number(item.quantity)}
+                              onChange={(e) => props.handleNumberChange(e, item)}
                             />
                           </Box>
                         </Grid>
@@ -106,7 +108,7 @@ export default function Cart(props) {
             </div>
           )}
           <Divider />
-          <h2>Total: ${props.total}</h2>
+          <h2>Total: ${props.total.toFixed(2)}</h2>
         </Drawer>
       </Box>
     </Modal>
