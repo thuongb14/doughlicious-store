@@ -23,7 +23,8 @@ export default function Shop(props) {
         cartDrawer={props.cartDrawer}
         addToCart={props.addToCart}
       />
-      <Cart
+      <Cart 
+      removeFromCart={props.removeFromCart}
         cart={props.cart}
         cartDrawer={props.cartDrawer}
         showCart={props.showCart}

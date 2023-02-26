@@ -11,6 +11,7 @@ import Modal from "@mui/material/Modal";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import TextField from "@mui/material/TextField";
 import { useState, useEffect } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const drawerWidth = 500;
 
@@ -26,7 +27,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Cart(props) {
   const theme = useTheme();
-  const { cart } = props;
+  const cart = props.cart;
 
   return (
     <Modal
@@ -59,37 +60,44 @@ export default function Cart(props) {
             <h3>Your Cart</h3>
           </DrawerHeader>
           <Divider />
-          {/* {cartItems.length < 1 ? (
+          {cart.length < 1 ? (
             <h4>There's nothing in your cart</h4>
           ) : (
-            <div> */}
-          {cart.map((item, index) => (
-            <List>
-              <Grid container spacing={2}>
-                <Grid item xs={5}>
-                  <Item>
-                    <img style={{ width: "80%" }} src={item.img} alt="" />
-                  </Item>
-                </Grid>
-                <Grid item xs={7}>
-                  <Item>
-                    <h3>{item.name}</h3>
-                  </Item>
-                  <Box component="form">
-                    <TextField
-                      type="text"
-                      id="outlined-basic"
-                      label="Quantity"
-                      variant="outlined"
-                      value={item.quantity}
-                    />
-                  </Box>
-                </Grid>
-              </Grid>
-            </List>
-          ))}
-          {/* </div>
-          )} */}
+            <div>
+              {cart.map((item, index) => (
+                <List>
+                  <Grid container spacing={2}>
+                    <Grid item xs={5}>
+                      <Item>
+                        <img style={{ width: "80%" }} src={item.img} alt="" />
+                      </Item>
+                    </Grid>
+                    <Grid item xs={7}>
+                      <Item>
+                        <h3>{item.name}</h3>
+                      </Item>
+                      <Grid container spacing={2}>
+                        <Grid item xs={8}>
+                          <Box component="form">
+                            <TextField
+                              type="number"
+                              id="outlined-basic"
+                              label="Quantity"
+                              variant="outlined"
+                              value={item.quantity}
+                            />
+                          </Box>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <DeleteIcon onClick={() => props.removeFromCart(item)} />
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </List>
+              ))}
+            </div>
+          )}
           <Divider />
           <h2>Total: </h2>
         </Drawer>
