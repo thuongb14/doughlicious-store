@@ -15,7 +15,7 @@ export default function Home(props) {
       />
       <Spline scene="https://prod.spline.design/3JeZz8PvzCNmXqsj/scene.splinecode" />
       <Text />
-      <Cart removeFromCart={props.removeFromCart} cart={props.cart} cartDrawer={props.cartDrawer} showCart={props.showCart} />
+      <Cart total={props.total} removeFromCart={props.removeFromCart} cart={props.cart} cartDrawer={props.cartDrawer} showCart={props.showCart} />
     </Container>
   );
 }

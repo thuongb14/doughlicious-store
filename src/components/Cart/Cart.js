@@ -3,14 +3,13 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import Divider, { dividerClasses } from "@mui/material/Divider";
+import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import Modal from "@mui/material/Modal";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import TextField from "@mui/material/TextField";
-import { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const drawerWidth = 500;
@@ -61,7 +60,14 @@ export default function Cart(props) {
           </DrawerHeader>
           <Divider />
           {cart.length < 1 ? (
-            <h4>There's nothing in your cart</h4>
+            <div style={{ textAlign: "center" }}>
+              <img
+                style={{ width: "50%", padding: "1rem" }}
+                src="https://openailabsprodscus.blob.core.windows.net/private/user-xih24vYk37Iwb9eO0e0334w5/generations/generation-FkcOfx3FSyEFWaHduAW2kZle/image.webp?st=2023-02-26T06%3A29%3A51Z&se=2023-02-26T08%3A27%3A51Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/webp&skoid=15f0b47b-a152-4599-9e98-9cb4a58269f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-02-26T04%3A55%3A56Z&ske=2023-03-05T04%3A55%3A56Z&sks=b&skv=2021-08-06&sig=TCeYbdBi1m89YZOIRq3uulhjYIYd5PQPhwF%2BhKoARxE%3D"
+                alt=""
+              />
+              <p>Let's add in!</p>
+            </div>
           ) : (
             <div>
               {cart.map((item, index) => (
@@ -69,12 +75,13 @@ export default function Cart(props) {
                   <Grid container spacing={2}>
                     <Grid item xs={5}>
                       <Item>
-                        <img style={{ width: "80%" }} src={item.img} alt="" />
+                        <img style={{ width: "100%" }} src={item.img} alt="" />
                       </Item>
                     </Grid>
                     <Grid item xs={7}>
                       <Item>
                         <h3>{item.name}</h3>
+                        <p>${item.price}</p>
                       </Item>
                       <Grid container spacing={2}>
                         <Grid item xs={8}>
@@ -89,7 +96,7 @@ export default function Cart(props) {
                           </Box>
                         </Grid>
                         <Grid item xs={4}>
-                          <DeleteIcon onClick={() => props.removeFromCart(item)} />
+                          <Icon onClick={() => props.removeFromCart(item)} />
                         </Grid>
                       </Grid>
                     </Grid>
@@ -99,7 +106,7 @@ export default function Cart(props) {
             </div>
           )}
           <Divider />
-          <h2>Total: </h2>
+          <h2>Total: ${props.total}</h2>
         </Drawer>
       </Box>
     </Modal>
@@ -113,3 +120,9 @@ const Item = styled("div")(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
+
+const Icon = styled(DeleteIcon)({
+  "&:hover": {
+    cursor: "pointer",
+  },
+});

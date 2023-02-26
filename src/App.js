@@ -8,6 +8,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [cartDrawer, setCartDrawer] = useState(false);
+  const [total, setTotal] = useState(0);
 
   const addToCart = (item) => {
     const existingItemIndex = cart.findIndex(
@@ -22,7 +23,7 @@ function App() {
       setCart(updatedCart);
     }
     setCartCount(cartCount + 1);
-    console.log(cart);
+    setTotal(total + item.price);
   };
 
   const removeFromCart = (item) => {
@@ -30,6 +31,8 @@ function App() {
     const updatedCart = [...cartFiltered];
     setCart(updatedCart);
     setCartCount(cartCount - item.quantity);
+    const reductedPrice = item.price * item.quantity;
+    setTotal(total - reductedPrice);
   };
 
   const showCart = () => {
@@ -40,6 +43,7 @@ function App() {
       path: "/",
       element: (
         <Home
+          total={total}
           removeFromCart={removeFromCart}
           cart={cart}
           cartCount={cartCount}
@@ -52,6 +56,7 @@ function App() {
       path: "/shop/doughnuts",
       element: (
         <Shop
+          total={total}
           removeFromCart={removeFromCart}
           cart={cart}
           cartCount={cartCount}
@@ -65,6 +70,7 @@ function App() {
       path: "/shop/cookies",
       element: (
         <Shop
+          total={total}
           removeFromCart={removeFromCart}
           cart={cart}
           cartCount={cartCount}

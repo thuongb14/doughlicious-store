@@ -59,7 +59,7 @@ export const products = {
     {
       id: 8,
       name: "Double Choc Chip Cookie",
-      product: "Cookies",
+      product: "cookies",
       price: 2.99,
       img: "https://cdn.shopify.com/s/files/1/0567/6577/6061/products/MORGAN_E-COMMERCECookiesDoubleChocPecanwithSymbol_720x.png?v=1634778488",
     },

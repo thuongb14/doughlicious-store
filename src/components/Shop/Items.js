@@ -26,7 +26,7 @@ export default function Items(props) {
       <Description>
         Made fresh everyday and doesn't hurt your pocket
       </Description>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box style={{marginTop: "2rem"}} sx={{ flexGrow: 1 }}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -81,7 +81,7 @@ const Heading = styled("h2")({
 
 const Description = styled("p")({
   margin: "0.5rem 0",
-  fontSize: "1.2rem",
+  fontSize: "1rem",
 });
 
 const Name = styled("p")({

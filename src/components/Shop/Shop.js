@@ -3,12 +3,10 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import Items from "./Items";
 import Cart from "../Cart/Cart";
-
-
+import Footer from "../Footer/Footer";
 
 export default function Shop(props) {
   const location = useLocation();
-  const cartShow = props.cartDrawer;
 
   return (
     <Container>
@@ -23,15 +21,15 @@ export default function Shop(props) {
         cartDrawer={props.cartDrawer}
         addToCart={props.addToCart}
       />
-      <Cart 
+      <Cart total={props.total}
       removeFromCart={props.removeFromCart}
         cart={props.cart}
         cartDrawer={props.cartDrawer}
         showCart={props.showCart}
       />
+      <Footer/>
     </Container>
   );
-  console.log(cartShow)
 }
 
 const Container = styled.div`
