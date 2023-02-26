@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
-import { useState } from "react";
 
 export default function Nav(props) {
   const { pathname } = props;
@@ -18,7 +17,7 @@ export default function Nav(props) {
       </CustomNavLink>
       <CustomNavLink onClick={() => props.showCart()}>
         <FontAwesomeIcon icon={faShoppingCart} />
-        <span>({props.cartCount})</span>
+        <span style={{color: "black"}}> ({props.cartCount})</span>
       </CustomNavLink>
     </Navbar>
   );

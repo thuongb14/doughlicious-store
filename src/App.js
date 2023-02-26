@@ -3,7 +3,7 @@ import Home from "./components/Homepage/Home";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Shop from "./components/Shop/Shop";
 import { useState } from "react";
-import Cart from "./components/Cart/Cart";
+
 function App() {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
@@ -16,17 +16,24 @@ function App() {
 
   const showCart = () => {
     setCartDrawer((cartDrawer) => !cartDrawer);
-    console.log(cartDrawer); // is false
   };
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <Home cartCount={cartCount} showCart={showCart} cartDrawer={cartDrawer} />,
+      element: (
+        <Home
+          cart={cart}
+          cartCount={cartCount}
+          showCart={showCart}
+          cartDrawer={cartDrawer}
+        />
+      ),
     },
     {
       path: "/shop/doughnuts",
       element: (
         <Shop
+          cart={cart}
           cartCount={cartCount}
           cartDrawer={cartDrawer}
           addToCart={addToCart}
@@ -38,8 +45,9 @@ function App() {
       path: "/shop/cookies",
       element: (
         <Shop
+          cart={cart}
           cartCount={cartCount}
-          cartDrawerState={cartDrawer}
+          cartDrawer={cartDrawer}
           addToCart={addToCart}
           showCart={showCart}
         />

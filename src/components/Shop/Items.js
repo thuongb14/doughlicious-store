@@ -4,6 +4,7 @@ import { Grid, Box, Button } from "@mui/material";
 import { products } from "../Data/Products";
 import SideMenu from "./SideMenu";
 
+
 const Item = styled("div")({
   padding: "1rem",
   textAlign: "center",
@@ -40,13 +41,13 @@ export default function Items(props) {
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
-              {selectedProduct.map((donut, index) => (
+              {selectedProduct.map((item, index) => (
                 <Grid item xs={2} sm={4} md={4} key={index}>
                   <Item>
-                    <Image src={donut.img} alt="" />
-                    <Name>{donut.name}</Name>
-                    <Price>${donut.price}</Price>
-                    <CustomButton onClick={() => props.addToCart(donut)}>
+                    <Image src={item.img} alt="" />
+                    <Name>{item.name}</Name>
+                    <Price>${item.price}</Price>
+                    <CustomButton onClick={() => props.addToCart(item)}>
                       Add to Cart
                     </CustomButton>
                   </Item>
@@ -98,7 +99,6 @@ const Image = styled("img")({
   width: "80%",
   height: "auto",
   margin: "0 auto",
-  display: "inline-block",
   overflow: "hidden",
   transition: ".3s ease-in-out, transform .3s ease-in-out",
   "&:hover": {
