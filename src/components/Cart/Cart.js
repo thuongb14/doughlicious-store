@@ -3,19 +3,16 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
+import Divider, { dividerClasses } from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import Modal from "@mui/material/Modal";
+import Grid from "@mui/system/Unstable_Grid/Grid";
+import TextField from "@mui/material/TextField";
+import { useState, useEffect } from "react";
 
-const drawerWidth = 400;
+const drawerWidth = 500;
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -29,8 +26,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Cart(props) {
   const theme = useTheme();
-  const cartItems = props.cart;
-  console.log(cartItems)
+  const { cart } = props;
 
   return (
     <Modal
@@ -46,6 +42,7 @@ export default function Cart(props) {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
+              padding: "1rem",
             },
           }}
           variant="permanent"
@@ -62,15 +59,49 @@ export default function Cart(props) {
             <h3>Your Cart</h3>
           </DrawerHeader>
           <Divider />
-          <List>
-            {cartItems.map((item, index) => (
-              <p>{item.name}</p>
-            ))}
-          </List>
+          {/* {cartItems.length < 1 ? (
+            <h4>There's nothing in your cart</h4>
+          ) : (
+            <div> */}
+          {cart.map((item, index) => (
+            <List>
+              <Grid container spacing={2}>
+                <Grid item xs={5}>
+                  <Item>
+                    <img style={{ width: "80%" }} src={item.img} alt="" />
+                  </Item>
+                </Grid>
+                <Grid item xs={7}>
+                  <Item>
+                    <h3>{item.name}</h3>
+                  </Item>
+                  <Box component="form">
+                    <TextField
+                      type="text"
+                      id="outlined-basic"
+                      label="Quantity"
+                      variant="outlined"
+                      value={item.quantity}
+                    />
+                  </Box>
+                </Grid>
+              </Grid>
+            </List>
+          ))}
+          {/* </div>
+          )} */}
+          <Divider />
+          <h2>Total: </h2>
         </Drawer>
       </Box>
     </Modal>
   );
 }
 
-
+const Item = styled("div")(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
