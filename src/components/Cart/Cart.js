@@ -27,7 +27,7 @@ export default function Cart(props) {
   const theme = useTheme();
   const cart = props.cart;
 
-  console.log(cart)
+  console.log(cart);
 
   return (
     <Modal
@@ -87,13 +87,32 @@ export default function Cart(props) {
                       </Item>
                       <Grid container spacing={2}>
                         <Grid item xs={8}>
-                          <Box component="form">
+                          <Box
+                            component="form"
+                            onSubmit={(e) => e.preventDefault()}
+                          >
                             <TextField
                               type="number"
                               label="Quantity"
                               variant="outlined"
                               defaultValue={Number(item.quantity)}
-                              onChange={(e) => props.handleNumberChange(e, item)}
+                              onChange={(e) =>
+                                props.handleNumberChange(e, item)
+                              }
+                              inputProps={{
+                                min: 1,
+                                onKeyPress: (e) => {
+                                  if (e.target.value === "0") {
+                                    encodeURI.preventDefault();
+                                  }
+                                },
+                                onBlur: (e) => {
+                                  if (e.target.value < 1) {
+                                    e.target.value = 1;
+                                    props.handleNumberChange(e, item);
+                                  }
+                                },
+                              }}
                             />
                           </Box>
                         </Grid>

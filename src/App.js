@@ -14,9 +14,13 @@ function App() {
     const existingItemIndex = cart.findIndex(
       (cartItem) => cartItem.id === item.id
     );
+    const newCount = cartCount - item.quantity + Number(e.target.value);
     const updatedCart = [...cart];
     updatedCart[existingItemIndex].quantity = Number(e.target.value);
+    updatedCart[existingItemIndex].totalItemPrice =
+      item.price * Number(e.target.value);
     setCart(updatedCart);
+    setCartCount(newCount);
   };
 
   const addToCart = (item) => {
@@ -25,14 +29,14 @@ function App() {
     );
     if (existingItemIndex === -1) {
       //not in cart, add
-      setCart([...cart, { ...item, quantity: 1 }]);
+      setCart([...cart, { ...item, quantity: 1, totalItemPrice: item.price }]);
     } else {
       const updatedCart = [...cart]; //in cart, add quantity
       updatedCart[existingItemIndex].quantity += 1;
+      updatedCart[existingItemIndex].totalItemPrice += item.price;
       setCart(updatedCart);
     }
     setCartCount(cartCount + 1);
-    setTotal(total + item.price);
   };
 
   const removeFromCart = (item) => {
@@ -40,13 +44,24 @@ function App() {
     const updatedCart = [...cartFiltered];
     setCart(updatedCart);
     setCartCount(cartCount - item.quantity);
-    const reductedPrice = item.price * item.quantity;
-    setTotal(total - reductedPrice);
   };
+
+  const calculateTotal = () => {
+    let totalPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+      totalPrice += cart[i].totalItemPrice;
+    }
+    setTotal(totalPrice);
+  };
+
+  useEffect(() => {
+    calculateTotal();
+  }, [cart]);
 
   const showCart = () => {
     setCartDrawer((cartDrawer) => !cartDrawer);
   };
+
   const routes = createBrowserRouter([
     {
       path: "/",
