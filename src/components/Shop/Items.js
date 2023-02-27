@@ -3,17 +3,21 @@ import { styled } from "@mui/material/styles";
 import { Grid, Box, Button } from "@mui/material";
 import { products } from "../Data/Products";
 import SideMenu from "./SideMenu";
-
-
-const Item = styled("div")({
-  padding: "1rem",
-  textAlign: "center",
-});
+import { useState } from "react";
 
 export default function Items(props) {
   const path = window.location.pathname;
   const selected = path.substring(6);
   const selectedProduct = products[selected];
+  const [addedItemIndex, setAddedItemIndex] = useState(null);
+
+  const handleAddToCart = (item, index) => {
+    props.addToCart(item);
+    setAddedItemIndex(index);
+    setTimeout(() => {
+      setAddedItemIndex(null);
+    }, 700);
+  };
 
   return (
     <Container>
@@ -26,7 +30,7 @@ export default function Items(props) {
       <Description>
         Made fresh everyday and doesn't hurt your pocket
       </Description>
-      <Box style={{marginTop: "2rem"}} sx={{ flexGrow: 1 }}>
+      <Box style={{ marginTop: "2rem" }} sx={{ flexGrow: 1 }}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
@@ -47,8 +51,8 @@ export default function Items(props) {
                     <Image src={item.img} alt="" />
                     <Name>{item.name}</Name>
                     <Price>${item.price}</Price>
-                    <CustomButton onClick={() => props.addToCart(item)}>
-                      Add to Cart
+                    <CustomButton onClick={() => handleAddToCart(item, index)}>
+                      {addedItemIndex === index ? "Item added" : "Add to Cart"}
                     </CustomButton>
                   </Item>
                 </Grid>
@@ -113,4 +117,9 @@ const Container = styled("div")({
   marginTop: "5rem",
   fontFamily: "Montserrat",
   padding: "1rem",
+});
+
+const Item = styled("div")({
+  padding: "1rem",
+  textAlign: "center",
 });

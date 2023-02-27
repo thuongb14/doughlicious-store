@@ -3,6 +3,7 @@ import Home from "./components/Homepage/Home";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Shop from "./components/Shop/Shop";
 import { useState, useEffect } from "react";
+import CheckOut from "./components/CheckOut/CheckOut";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -106,6 +107,10 @@ function App() {
           showCart={showCart}
         />
       ),
+    },
+    {
+      path: "/checkout",
+      element: <CheckOut total={total} cart={cart} />,
     },
   ]);
   return (

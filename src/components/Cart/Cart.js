@@ -11,6 +11,8 @@ import Modal from "@mui/material/Modal";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import TextField from "@mui/material/TextField";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 500;
 
@@ -128,6 +130,13 @@ export default function Cart(props) {
           )}
           <Divider />
           <h2>Total: ${props.total.toFixed(2)}</h2>
+          {props.total <= 0 ? (
+            ""
+          ) : (
+            <CheckoutButton component={Link} to="/checkout">
+              <strong>Check Out</strong>
+            </CheckoutButton>
+          )}
         </Drawer>
       </Box>
     </Modal>
@@ -145,5 +154,17 @@ const Item = styled("div")(({ theme }) => ({
 const Icon = styled(DeleteIcon)({
   "&:hover": {
     cursor: "pointer",
+  },
+});
+
+const CheckoutButton = styled(Button)({
+  margin: "0 auto",
+  padding: "1rem 2rem",
+  width: "fit-content",
+  backgroundColor: "#36A65C",
+  color: "white",
+  "&:hover": {
+    backgroundColor: "green",
+    color: "white",
   },
 });

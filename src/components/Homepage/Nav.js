@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 export default function Nav(props) {
   const { pathname } = props;
+  console.log(pathname)
 
   return (
     <Navbar pathname={pathname}>
@@ -15,10 +16,14 @@ export default function Nav(props) {
       <CustomNavLink to="/shop/doughnuts" pathname={pathname}>
         SHOP
       </CustomNavLink>
-      <CustomNavLink onClick={() => props.showCart()}>
-        <FontAwesomeIcon icon={faShoppingCart} />
-        <span style={{color: "black"}}> ({props.cartCount})</span>
-      </CustomNavLink>
+      {pathname.includes("checkout") ? (
+        ""
+      ) : (
+        <CustomNavLink onClick={() => props.showCart()}>
+          <FontAwesomeIcon icon={faShoppingCart} />
+          <span style={{ color: "black" }}> ({props.cartCount})</span>
+        </CustomNavLink>
+      )}
     </Navbar>
   );
 }
@@ -35,7 +40,7 @@ const Navbar = styled.div`
   font-size: 20px;
   font-family: "Montserrat", sans-serif;
   background-color: ${({ pathname }) =>
-    pathname === "/" ? "rgb(255, 255, 255, 0.3)" : "pink" };
+    pathname === "/" ? "rgb(255, 255, 255, 0.3)" : "pink"};
   padding: 1rem 3rem;
 `;
 
