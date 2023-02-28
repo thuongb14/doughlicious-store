@@ -6,10 +6,16 @@ import { useState, useEffect } from "react";
 import CheckOut from "./components/CheckOut/CheckOut";
 
 function App() {
-  const [cart, setCart] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
+  const [cartCount, setCartCount] = useState(
+    Number(localStorage.getItem("cartCount")) || 0
+  );
   const [cartDrawer, setCartDrawer] = useState(false);
   const [total, setTotal] = useState(0);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cartCount", cartCount);
 
   const handleNumberChange = (e, item) => {
     const existingItemIndex = cart.findIndex(
@@ -45,6 +51,13 @@ function App() {
     const updatedCart = [...cartFiltered];
     setCart(updatedCart);
     setCartCount(cartCount - item.quantity);
+    if (cartFiltered.length === 0) {
+      localStorage.removeItem("cart");
+      localStorage.removeItem("cartCount");
+    } else {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      localStorage.setItem("cartCount", cartCount - item.quantity);
+    }
   };
 
   const calculateTotal = () => {

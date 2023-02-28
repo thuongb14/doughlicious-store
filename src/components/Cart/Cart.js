@@ -79,7 +79,7 @@ export default function Cart(props) {
                   <Grid container spacing={2}>
                     <Grid item xs={5}>
                       <Item>
-                        <img style={{ width: "100%" }} src={item.img} alt="" />
+                        <img style={{ width: "100%", borderRadius: "8%" }} src={item.img} alt="" />
                       </Item>
                     </Grid>
                     <Grid item xs={7}>
