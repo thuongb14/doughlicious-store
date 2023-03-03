@@ -1,13 +1,10 @@
-import Nav from "../Homepage/Nav";
-// import { styled } from "@mui/material/styles";
-import styled from "styled-components";
 import Grid from "@mui/system/Unstable_Grid/Grid";
 import { Paper } from "@mui/material";
 import InformationStep from "./InformationStep";
 import { useState } from "react";
 import PaymentStep from "./PaymentStep";
 import ReviewCart from "./ReviewCart";
-
+import OrderPlaced from "./OrderPlaced"
 export default function CheckOut(props) {
   const steps = [
     "Information Details",
@@ -55,7 +52,7 @@ export default function CheckOut(props) {
           </Grid>
         );
       case 2:
-        return "thank you";
+        return <OrderPlaced removeAllFromCart={props.removeAllFromCart}/>;
       default:
         throw new Error("Unknown step");
     }

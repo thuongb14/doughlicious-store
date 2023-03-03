@@ -13,14 +13,34 @@ import {
   Radio,
   FormControl,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { useState } from "react";
+import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 export default function InformationPath(props) {
   const steps = props.steps;
   const [value, setValue] = useState("delivery");
+  const containerStyle = {
+    width: "100%",
+    height: "600px",
+  };
+  const googleMapApi = process.env.REACT_APP_GOOGLE_APP_API;
+
+  // const getLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       console.log(position.coords.latitude)
+  //     });
+  //   } else {
+  //     console.log(null);
+  //   }
+  // };
+
+  const center = {
+    lat: -37.815018,
+    lng: 144.946014,
+  };
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -78,7 +98,22 @@ export default function InformationPath(props) {
         </FormControl>
       </Box>
       {value === "pickup" ? (
-        <p>Unfortunately we don't have any store near you.</p>
+        <div>
+          <p>Unfortunately we don't have any store near you</p>
+          <LoadScript
+            style={{ width: "100%", height: "600px" }}
+            googleMapsApiKey="AIzaSyASjngk4iHnVI1MJj2619tkKNaVAGj3XCs"
+          >
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
+              {/* Child components, such as markers, info windows, etc. */}
+              <></>
+            </GoogleMap>
+          </LoadScript>
+        </div>
       ) : (
         <Box
           style={{ textAlign: "left", padding: "2rem 5rem" }}

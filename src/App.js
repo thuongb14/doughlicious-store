@@ -76,6 +76,13 @@ function App() {
     setCartDrawer((cartDrawer) => !cartDrawer);
   };
 
+  const removeAllFromCart = () => {
+    setCart([])
+    setCartCount(0)
+    localStorage.setItem("cart", JSON.stringify([]));
+    localStorage.setItem("cartCount", 0);
+  }
+
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -123,7 +130,7 @@ function App() {
     },
     {
       path: "/checkout",
-      element: <CheckOut total={total} cart={cart} />,
+      element: <CheckOut removeAllFromCart={removeAllFromCart} total={total} cart={cart} />,
     },
   ]);
   return (

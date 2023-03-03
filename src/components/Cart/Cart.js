@@ -79,7 +79,11 @@ export default function Cart(props) {
                   <Grid container spacing={2}>
                     <Grid item xs={5}>
                       <Item>
-                        <img style={{ width: "100%", borderRadius: "8%" }} src={item.img} alt="" />
+                        <img
+                          style={{ width: "100%", borderRadius: "8%" }}
+                          src={item.img}
+                          alt=""
+                        />
                       </Item>
                     </Grid>
                     <Grid item xs={7}>
@@ -133,9 +137,14 @@ export default function Cart(props) {
           {props.total <= 0 ? (
             ""
           ) : (
-            <CheckoutButton component={Link} to="/checkout">
-              <strong>Check Out</strong>
-            </CheckoutButton>
+            <div>
+              <CheckoutButton component={Link} to="/checkout">
+                <strong>Check-out as guest</strong>
+              </CheckoutButton>
+              <CheckoutButton style={{marginLeft: "1rem", backgroundColor: "grey"}} component={Link} to="/sign-up">
+                <strong>Sign In</strong>
+              </CheckoutButton>
+            </div>
           )}
         </Drawer>
       </Box>
