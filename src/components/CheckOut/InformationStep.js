@@ -25,8 +25,6 @@ export default function InformationPath(props) {
     width: "100%",
     height: "600px",
   };
-  const googleMapApi = process.env.REACT_APP_GOOGLE_APP_API;
-
   // const getLocation = () => {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition((position) => {
