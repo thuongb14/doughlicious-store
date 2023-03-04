@@ -146,7 +146,7 @@ function App() {
   ], {basename: "/"});
   return (
     <div className="App">
-      <RouterProvider router={routes} />
+      <RouterProvider basename="/" router={routes} />
     </div>
   );
 }
