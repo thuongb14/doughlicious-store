@@ -143,7 +143,7 @@ function App() {
       path: "/sign-up",
       element: <SignUp />,
     },
-  ]);
+  ], {basename: "/"});
   return (
     <div className="App">
       <RouterProvider router={routes} />
