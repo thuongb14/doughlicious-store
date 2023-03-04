@@ -142,7 +142,7 @@ export default function Cart(props) {
                 <strong>Check-out as guest</strong>
               </CheckoutButton>
               <CheckoutButton style={{marginLeft: "1rem", backgroundColor: "grey"}} component={Link} to="/sign-up">
-                <strong>Sign In</strong>
+                <strong>Sign Up</strong>
               </CheckoutButton>
             </div>
           )}

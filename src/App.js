@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Shop from "./components/Shop/Shop";
 import { useState, useEffect } from "react";
 import CheckOut from "./components/CheckOut/CheckOut";
+import SignUp from "./components/Authentication/SignUp";
 
 function App() {
   const [cart, setCart] = useState(
@@ -77,11 +78,11 @@ function App() {
   };
 
   const removeAllFromCart = () => {
-    setCart([])
-    setCartCount(0)
+    setCart([]);
+    setCartCount(0);
     localStorage.setItem("cart", JSON.stringify([]));
     localStorage.setItem("cartCount", 0);
-  }
+  };
 
   const routes = createBrowserRouter([
     {
@@ -130,7 +131,17 @@ function App() {
     },
     {
       path: "/checkout",
-      element: <CheckOut removeAllFromCart={removeAllFromCart} total={total} cart={cart} />,
+      element: (
+        <CheckOut
+          removeAllFromCart={removeAllFromCart}
+          total={total}
+          cart={cart}
+        />
+      ),
+    },
+    {
+      path: "/sign-up",
+      element: <SignUp />,
     },
   ]);
   return (
