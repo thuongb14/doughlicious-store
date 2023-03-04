@@ -47,4 +47,5 @@ _This project is built for GA Final Project_
 - Testing is not working - error: Module not found
 
 ### Incomplete Task
+- Open each product in modal to see detail
 - Signup/Login function.
