@@ -2,7 +2,7 @@
   "name": "project4",
   "version": "0.1.0",
   "private": true,
-    "homepage": "https://thuongb14.github.io/doughlicious-store",
+  "homepage": "https://thuongb14.github.io/doughlicious-store",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && rm -rf docs && mv build docs",
     "test": "react-scripts test",
