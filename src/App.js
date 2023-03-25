@@ -147,10 +147,10 @@ function App() {
   ], {basename: "/"});
   return (
     <div className="App">
-      <Router basename="/">
+
         <Routes>
           <Route
-            path="/"
+            path="/doughlicious-store"
             element={
               <Home
                 handleNumberChange={handleNumberChange}
@@ -205,7 +205,6 @@ function App() {
           />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>
-      </Router>
     </div>
   );
 

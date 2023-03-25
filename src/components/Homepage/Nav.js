@@ -10,10 +10,10 @@ export default function Nav(props) {
   return (
     <Navbar pathname={pathname}>
       <Title>DOUGHLICIOUS</Title>
-      <CustomNavLink to="/" pathname={pathname}>
+      <CustomNavLink to="./" pathname={pathname}>
         HOME
       </CustomNavLink>
-      <CustomNavLink to="/shop/doughnuts" pathname={pathname}>
+      <CustomNavLink to="./shop/doughnuts" pathname={pathname}>
         SHOP
       </CustomNavLink>
       {pathname.includes("checkout") ? (
