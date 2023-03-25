@@ -85,69 +85,68 @@ function App() {
     localStorage.setItem("cartCount", 0);
   };
 
-  const routes = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <Home
-          handleNumberChange={handleNumberChange}
-          total={total}
-          removeFromCart={removeFromCart}
-          cart={cart}
-          cartCount={cartCount}
-          showCart={showCart}
-          cartDrawer={cartDrawer}
-        />
-      ),
-    },
-    {
-      path: "/shop/doughnuts",
-      element: (
-        <Shop
-          handleNumberChange={handleNumberChange}
-          total={total}
-          removeFromCart={removeFromCart}
-          cart={cart}
-          cartCount={cartCount}
-          cartDrawer={cartDrawer}
-          addToCart={addToCart}
-          showCart={showCart}
-        />
-      ),
-    },
-    {
-      path: "/shop/cookies",
-      element: (
-        <Shop
-          handleNumberChange={handleNumberChange}
-          total={total}
-          removeFromCart={removeFromCart}
-          cart={cart}
-          cartCount={cartCount}
-          cartDrawer={cartDrawer}
-          addToCart={addToCart}
-          showCart={showCart}
-        />
-      ),
-    },
-    {
-      path: "/checkout",
-      element: (
-        <CheckOut
-          removeAllFromCart={removeAllFromCart}
-          total={total}
-          cart={cart}
-        />
-      ),
-    },
-    {
-      path: "/sign-up",
-      element: <SignUp />,
-    },
-  ], {basename: "/"});
+  // const routes = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: (
+  //       <Home
+  //         handleNumberChange={handleNumberChange}
+  //         total={total}
+  //         removeFromCart={removeFromCart}
+  //         cart={cart}
+  //         cartCount={cartCount}
+  //         showCart={showCart}
+  //         cartDrawer={cartDrawer}
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     path: "/shop/doughnuts",
+  //     element: (
+  //       <Shop
+  //         handleNumberChange={handleNumberChange}
+  //         total={total}
+  //         removeFromCart={removeFromCart}
+  //         cart={cart}
+  //         cartCount={cartCount}
+  //         cartDrawer={cartDrawer}
+  //         addToCart={addToCart}
+  //         showCart={showCart}
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     path: "/shop/cookies",
+  //     element: (
+  //       <Shop
+  //         handleNumberChange={handleNumberChange}
+  //         total={total}
+  //         removeFromCart={removeFromCart}
+  //         cart={cart}
+  //         cartCount={cartCount}
+  //         cartDrawer={cartDrawer}
+  //         addToCart={addToCart}
+  //         showCart={showCart}
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     path: "/checkout",
+  //     element: (
+  //       <CheckOut
+  //         removeAllFromCart={removeAllFromCart}
+  //         total={total}
+  //         cart={cart}
+  //       />
+  //     ),
+  //   },
+  //   {
+  //     path: "/sign-up",
+  //     element: <SignUp />,
+  //   },
+  // ], {basename: "/"});
   return (
     <div className="App">
-
         <Routes>
           <Route
             path="/"
