@@ -7,9 +7,10 @@ import { useState } from "react";
 
 export default function Items(props) {
   const path = window.location.pathname;
-  const selected = path.substring(6);
+  const selected = path.substring(25);
   const selectedProduct = products[selected];
   const [addedItemIndex, setAddedItemIndex] = useState(null);
+  console.log(selected)
 
   const handleAddToCart = (item, index) => {
     props.addToCart(item);

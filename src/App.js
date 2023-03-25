@@ -150,7 +150,7 @@ function App() {
 
         <Routes>
           <Route
-            path="/doughlicious-store"
+            path="/"
             element={
               <Home
                 handleNumberChange={handleNumberChange}
