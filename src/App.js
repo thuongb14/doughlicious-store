@@ -5,6 +5,7 @@ import Shop from "./components/Shop/Shop";
 import { useState, useEffect } from "react";
 import CheckOut from "./components/CheckOut/CheckOut";
 import SignUp from "./components/Authentication/SignUp";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [cart, setCart] = useState(
@@ -146,9 +147,68 @@ function App() {
   ], {basename: "/"});
   return (
     <div className="App">
-      <RouterProvider basename="/" router={routes} />
+      <Router basename="/">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                handleNumberChange={handleNumberChange}
+                total={total}
+                removeFromCart={removeFromCart}
+                cart={cart}
+                cartCount={cartCount}
+                showCart={showCart}
+                cartDrawer={cartDrawer}
+              />
+            }
+          />
+          <Route
+            path="/shop/doughnuts"
+            element={
+              <Shop
+                handleNumberChange={handleNumberChange}
+                total={total}
+                removeFromCart={removeFromCart}
+                cart={cart}
+                cartCount={cartCount}
+                cartDrawer={cartDrawer}
+                addToCart={addToCart}
+                showCart={showCart}
+              />
+            }
+          />
+          <Route
+            path="/shop/cookies"
+            element={
+              <Shop
+                handleNumberChange={handleNumberChange}
+                total={total}
+                removeFromCart={removeFromCart}
+                cart={cart}
+                cartCount={cartCount}
+                cartDrawer={cartDrawer}
+                addToCart={addToCart}
+                showCart={showCart}
+              />
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <CheckOut
+                removeAllFromCart={removeAllFromCart}
+                total={total}
+                cart={cart}
+              />
+            }
+          />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
+      </Router>
     </div>
   );
+
 }
 
 export default App;
