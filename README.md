@@ -2,8 +2,6 @@
 
 # Doughlicious E-commerce Store
 
-_This project is built for GA Final Project_
-
 ### Built With
 
 * Javascript
